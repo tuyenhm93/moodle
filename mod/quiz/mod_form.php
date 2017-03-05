@@ -45,7 +45,18 @@ class mod_quiz_mod_form extends moodleform_mod {
     /** @var int the max number of attempts allowed in any user or group override on this quiz. */
     protected $maxattemptsanyoverride = null;
 
-    public function __construct($current, $section, $cm, $course) {
+    /**
+     * mod_quiz_mod_form constructor
+     *
+     * @param $current
+     * @param $section
+     * @param $cm
+     * @param $course
+     * @param $ajax true if this form constructed by webservice
+     * @param $formparams form params
+     * @param $jsonformdata json form data from ajax request
+     */
+    public function __construct($current, $section, $cm, $course, $ajax = false, $formparams = null, $jsonformdata = null) {
         self::$reviewfields = array(
             'attempt'          => array('theattempt', 'quiz'),
             'correctness'      => array('whethercorrect', 'question'),
@@ -55,7 +66,7 @@ class mod_quiz_mod_form extends moodleform_mod {
             'rightanswer'      => array('rightanswer', 'question'),
             'overallfeedback'  => array('reviewoverallfeedback', 'quiz'),
         );
-        parent::__construct($current, $section, $cm, $course);
+        parent::__construct($current, $section, $cm, $course, $ajax, $formparams, $jsonformdata);
     }
 
     protected function definition() {

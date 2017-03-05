@@ -33,9 +33,20 @@ class mod_lesson_mod_form extends moodleform_mod {
 
     protected $course = null;
 
-    public function __construct($current, $section, $cm, $course) {
+    /**
+     * mod_lesson_mod_form constructor
+     *
+     * @param $current
+     * @param $section
+     * @param $cm
+     * @param $course
+     * @param $ajax true if this form constructed by webservice
+     * @param $formparams form params
+     * @param $jsonformdata json form data from ajax request
+     */
+    public function __construct($current, $section, $cm, $course, $ajax = false, $formparams = null, $jsonformdata = null) {
         $this->course = $course;
-        parent::__construct($current, $section, $cm, $course);
+        parent::__construct($current, $section, $cm, $course, $ajax, $formparams, $jsonformdata);
     }
 
     /**
